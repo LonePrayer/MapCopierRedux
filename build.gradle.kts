@@ -1,7 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "1.34"
+    id("io.izzel.taboolib") version "1.56"
     id("org.jetbrains.kotlin.jvm") version "1.5.10"
 }
 
@@ -10,27 +10,37 @@ taboolib {
     install("common-5")
     install("module-chat")
     install("platform-bukkit")
+    install("expansion-command-helper")
     classifier = null
-    version = "6.0.7-41"
+    version = "6.0.11-20"
 }
 
 repositories {
-//    maven { url = uri("https://mvn.intellectualsites.com/content/repositories/releases/") } // FAWE
     mavenCentral()
+    // maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
 }
 
 dependencies {
+    // implementation(platform("com.intellectualsites.bom:bom-newest:1.32"))
+    // compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core")
+    // compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit") { isTransitive = false }
     compileOnly("ink.ptms:nms-all:1.0.0")
-    compileOnly("ink.ptms.core:v11800:11800-minimize:api")
-    compileOnly("ink.ptms.core:v11800:11800-minimize:mapped")
-//    compileOnly("com.intellectualsites.fawe:FAWE-Bukkit:1.16-725")
-//    compileOnly("com.intellectualsites.fawe:FAWE-Core:1.16-725")
+    compileOnly("ink.ptms.core:v11902:11902-minimize:mapped")
+    compileOnly("ink.ptms.core:v11902:11902-minimize:universal")
     compileOnly(kotlin("stdlib"))
-    compileOnly(fileTree("libs"))
+    // compileOnly(fileTree("libs"))
+    compileOnly(files(file("libs/FastAsyncWorldEdit-Bukkit-2.6.5.jar")))
 }
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = listOf("-Xjvm-default=all")
+    }
 }
 
 configure<JavaPluginConvention> {

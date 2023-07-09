@@ -1,17 +1,17 @@
 package kim.bifrost.rain.mapcopier
 
-import com.boydti.fawe.FaweAPI
-import com.boydti.fawe.util.EditSessionBuilder
+import com.fastasyncworldedit.core.FaweAPI
+import com.sk89q.worldedit.EditSessionBuilder
+import com.sk89q.worldedit.WorldEdit
 import com.sk89q.worldedit.math.BlockVector3
 import org.bukkit.Location
 import taboolib.common.platform.Plugin
-import taboolib.common.platform.function.info
 
-object MapCopier : Plugin() {
+object  MapCopier : Plugin() {
+
     fun copy(from: Location, to: Location, x:Int, y:Int, z:Int) {
-        val session = EditSessionBuilder(FaweAPI.getWorld(to.world!!.name))
-            .autoQueue(true)
-            .fastmode(true)
+        val session = EditSessionBuilder(WorldEdit.getInstance().eventBus).world(FaweAPI.getWorld(to.world!!.name))
+            .fastMode(true)
             .build()
         for (_x in 0..x){
             for (_y in 0..y){

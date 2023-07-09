@@ -36,7 +36,7 @@ object CommandHandler {
                                     NumberConversions.toInt(context.argument(-1)),
                                     NumberConversions.toInt(argument),
                                 )
-                                sender.sendMessage("&c[MapCopierX] &7请求已发起...".colored())
+                                sender.sendMessage("&c[MapCopierRedux] &7请求已发起...".colored())
                             }
                         }
                     }
