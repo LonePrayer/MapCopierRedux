@@ -29,7 +29,7 @@ dependencies {
     compileOnly("ink.ptms.core:v11902:11902-minimize:universal")
     compileOnly(kotlin("stdlib"))
     // compileOnly(fileTree("libs"))
-    compileOnly(files(file("libs/FastAsyncWorldEdit-Bukkit-2.6.5.jar")))
+    compileOnly(files(file("libs/FastAsyncWorldEdit-Bukkit-2.7.1.jar")))
 }
 
 tasks.withType<JavaCompile> {
